@@ -143,7 +143,59 @@ width: 11px;
 .kill-margin {
     margin: 0 !important;
 }
+/**   WHATSAPP  **/
+.wsp .fa-whatsapp {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+  width: 60px;
+  height: 60px;
+  bottom: 10%;
+  right: 15px;
+  background: #075e54;
+  border-radius: 100%;
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+}
 
+.wsp a {
+  color: white;
+  font-size: 40px;
+}
+.shop{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  right: 15px;
+  background: var(--principal);
+  border-radius: 100%;
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+}
+.shop a{
+  font-size: 2rem;
+  color: #fff;
+}
+.shop span{
+  position: absolute;
+  left: 3rem;
+  top: 1rem;
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  text-align: center;
+  font-size: 11px;
+  color: #fff;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #dc0000;
+}
 /*************************
 *******Navigation******
 **************************/
@@ -738,8 +790,45 @@ section #count{
 
 }
 
-
-
+.productos{
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+  gap: 2rem;
+  padding: 0 4rem;
+}
+.productos .card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.651);
+  padding: 3rem;
+}
+.productos .card img{
+  width: 150px;
+  height: 150px;
+}
+.card .cantidad{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card input{
+  text-align: center;
+  width: 6rem;
+  height: 3rem;
+  border: 2px solid #ccc;
+  margin-top: 2rem;
+}
+.card h4{
+  margin-top: 1rem;
+}
+.card button{
+  font-size: 1.8rem;
+  color: var(--principal);
+  margin-top: 2rem;
+}
 /*=================================
     Quotes
 ===================================*/
