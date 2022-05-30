@@ -502,11 +502,12 @@ width: 11px;
 /*============================================================
     Portfolio
 ============================================================*/
-
-#projects {
-    width: 100%;
+.trabajos-grid{
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+  gap: 5rem;
+  padding: 0 1rem;
 }
-
 .project-filter {
   margin-bottom: 40px;
 }
