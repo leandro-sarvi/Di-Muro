@@ -533,12 +533,13 @@ width: 11px;
 .mix {
     display: none;
 }
-
 .portfolio-item {
     position: relative;
-    float: left;
     overflow: hidden;
-    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .plus {
