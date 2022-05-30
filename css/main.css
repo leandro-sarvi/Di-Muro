@@ -314,7 +314,7 @@ width: 11px;
   line-height: 76px;
   position: absolute;
   text-align: center;
-  top: 50%;
+  top: 95%;
   width: 60px;
   z-index: 20;
   margin-top: -30px;
@@ -327,25 +327,15 @@ width: 11px;
 }
 
 #nav-arrows > a.sl-prev {
-    left: 50px;
+    left: 10px;
 }
-
 #nav-arrows > a.sl-next {
-    right: 50px;
+    right: 10px;
 }
-
-#nav-arrows > a.sl-next:hover {
-    background-color: var(--principal);
-    border-color: var(--principal);
-    color: #fff;
-}
-
 .carousel-indicators .active {
   background-color: var(--principal);
   border: 0;
 }
-
-
 /*============================================================
     Services
 ============================================================*/
