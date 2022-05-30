@@ -541,7 +541,9 @@ width: 11px;
     align-items: center;
     justify-content: center;
 }
-
+.portfolio-item img{
+  width: 100%;
+}
 .plus {
   background: url("../img/icons/plus.png") no-repeat scroll center center var(--principal);
   border-radius: 50%;
