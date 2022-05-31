@@ -28,7 +28,9 @@ ol, ul {
     padding: 0;
     list-style: none;
 }
-
+.swal2-container{
+  z-index: 1200;
+}
 figure, p {
     margin: 3rem 0;
 }
@@ -1089,4 +1091,233 @@ section #count{
 
 .copyright p:first-child {
     margin-bottom: 15px;
+}
+/* MODALES */
+.modal-carrito {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 1rem;
+}
+.modal-content button{
+  height: 4rem;
+  background: transparent;
+  color: var(--principal);
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.modal-header i {
+  font-size: 2rem;
+  color: var(--principal);
+  padding: 1rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+}
+.modal-general {
+  width: 100%;
+  padding: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--principal);
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-general span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.info-total {
+  padding: 1rem;
+}
+
+.info-total h4 {
+  margin: 0;
+  color: var(--principal)smoke;
+}
+
+.item-container {
+  overflow-y: scroll;
+  height: 35rem;
+  padding: 1rem;
+}
+
+.carrito-vacio {
+  margin: 9rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item-card{
+  border-radius: 10px;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 20%);
+  padding: 2rem 2rem;
+  z-index: 999;
+  margin-top: 3rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-item i {
+  font-size: 2rem;
+}
+
+.info-item .titulo {
+  width: 11rem;
+}
+
+.info-item a {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: var(--principal);
+}
+
+.info-item span {
+  color: var(--principal);
+}
+
+.titulo h5 {
+  margin: 0;
+  color: var(--principal);
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+  color: var(--principal);
+  text-align: center;
+}
+
+.next input {
+  width: 3rem;
+  margin: 0 1rem;
+  text-align: center;
+  border: none;
+  pointer-events: none;
+  background-color: transparent;
+  color: var(--principal);
+}
+/*-------MODAL ENVIO----------*/
+.modal-envio{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.mde{
+  border: 1px solid rgba(0, 0, 0, .2);
+  background-color: #fff;
+  border-radius: 1rem;
+  position: relative;
+  margin: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.modal-content-envio{
+  overflow-y: scroll;
+  height: 55vh;
+}
+.modal-b{
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.info-envio{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.info-envio h4{
+  margin-top: 0;
+  color: #fff;
+}
+.modal-datos{
+padding: 1rem;
+}
+.modal-datos h4{
+  color: var(--principal);
+  margin: 1rem;
+  font-size: 2rem;
+}
+.datos{
+  display: flex;
+  flex-direction: column;
+  padding: .5rem;
+}
+.datos label{
+  color: var(--principal);
+  margin-bottom: .5rem;
+}
+.datos input{
+  height: 4rem;
+  background-color: transparent;
+  color: var(--principal);
+  border: none;
+  border-bottom: 2px solid var(--principal);
+  outline: none;
+}
+.datos input::placeholder{
+  color:var(--principal);
+  padding: 1rem;
+}
+.modal-footer{
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+}
+.modal-footer div{
+  margin-bottom: 1rem;
+  display: flex; 
+  justify-content: space-between;
+  color: var(--principal);
+}
+.modal-footer h4{
+  color: var(--principal);
+  font-size: 2rem;
+}
+.btn-envio{
+  font-size: 2rem;
+  color: var(--principal);
+  background-color: transparent;
+  padding: 3rem;
+  cursor:pointer;
+  border: none;
 }

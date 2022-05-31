@@ -11,7 +11,7 @@
     <meta name="keywords"content="Perforaciones, extración de agua, sumerjibles">
     <!-- meta character set -->
     <meta charset="utf-8">
-
+    <link rel="icon" href="/img/ico.ico">
     <!-- Site Title -->
     <title>Di Muro | Perforaciones para extracción de agua</title>
 
@@ -273,67 +273,8 @@
                 <h2>Productos</h2>
                 <p>Añadi tu producto al carrito y solicitalo por Whatsapp</p>
             </div>
-            <div class="productos">
-            <div class="card">
-                <img src="/img/productos/4BS-367x367.jpg" alt="">
-                <div class="info-producto">
-                    <h3>Titulo producto</h3>
-                    <span>Description</span>
-                </div>
-                <div class="cantidad">
-                    <input type="number" name="cantidad" id="" min="1" value="1">
-                </div>
-                <h4>$1000</h4>
-                <button>Añadir <i class="fas fa-shopping-cart"></i></button>
-            </div>
-            <div class="card">
-                <img src="/img/productos/AI-367x367.jpg" alt="">
-                <div class="info-producto">
-                    <h3>Titulo producto</h3>
-                    <span>Description</span>
-                </div>
-                <div class="cantidad">
-                    <input type="number" name="cantidad" id="" min="1" value="1">
-                </div>
-                <h4>$1000</h4>
-                <button>Añadir <i class="fas fa-shopping-cart"></i></button>
-            </div>
-            <div class="card">
-                <img src="/img/productos/SUB4-367x367.jpg" alt="">
-                <div class="info-producto">
-                    <h3>Titulo producto</h3>
-                    <span>Description</span>
-                </div>
-                <div class="cantidad">
-                    <input type="number" name="cantidad" id="" min="1" value="1">
-                </div>
-                <h4>$1000</h4>
-                <button>Añadir <i class="fas fa-shopping-cart"></i></button>
-            </div>
-            <div class="card">
-                <img src="/img/productos/D_NQ_NP_726550-MLA46870390280_072021-V.jpg" alt="">
-                <div class="info-producto">
-                    <h3>Titulo producto</h3>
-                    <span>Description</span>
-                </div>
-                <div class="cantidad">
-                    <input type="number" name="cantidad" id="" min="1" value="1">
-                </div>
-                <h4>$1000</h4>
-                <button>Añadir <i class="fas fa-shopping-cart"></i></button>
-            </div>
-            <div class="card">
-                <img src="/img/productos/tubo-pvc-pocero-c-cabeza-ø-115-x-6-mts.jpg" alt="">
-                <div class="info-producto">
-                    <h3>Titulo producto</h3>
-                    <span>Description</span>
-                </div>
-                <div class="cantidad">
-                    <input type="number" name="cantidad" id="" min="1" value="1">
-                </div>
-                <h4>$1000</h4>
-                <button>Añadir <i class="fas fa-shopping-cart"></i></button>
-            </div>
+            <div class="productos" id="conte-productos">
+            
         </div>
         </section>
         
@@ -621,6 +562,91 @@
     <!--
         End #footer
         ========================== -->
+        <div class="modal-envio hidden" id="lista-envio">
+            <div class="mde">
+                <div class="modal-header">
+                    <i class="fas fa-times" id="closeModalEnvio"></i>
+                  </div>
+                <div class="modal-content-envio">
+                    <div class="modal-b">
+                      <div class="info-envio">
+                        <h4>ULTIMO PASO</h4>
+                        <span>Completa tus datos, la zona de entrega y envíanos tu cotización vía Whatsapp</span>
+                        <span>Una vez recibida te confirmaremos disponibilidad y fecha de entrega</span>
+                      </div>
+                    </div>
+                    <div class="modal-datos">
+                      <h4> Confirmación del pedido</h4>
+                      <h4>1- Tus datos</h4>
+                      <div class="datos">
+                        <label>Nombre completo</label>
+                        <input type="text" id="orderName" placeholder="Nombre completo de quien recibe." autocomplete="off">
+                      </div>
+                      <div class="datos">
+                        <label>Dirección</label>
+                        <input type="text" id="orderAddress" placeholder="Dirección de entrega." autocomplete="off">
+                      </div>
+                      <div class="datos">
+                        <label>Entre calles</label>
+                        <input type="text" id="orderReference" placeholder="Entre las calles." autocomplete="off">
+                      </div>
+                      <div class="datos">
+                        <label>Localidad</label>
+                        <input type="text" id="orderLocalidad" placeholder="Localidad" autocomplete="off">
+                      </div>
+                      <div class="datos" id="metodosPago">
+                        <label>Método de pago</label>
+                        <input type="radio" id="efectivo" name="fav_language" value="Efectivo" checked>
+              <label for="efectivo">Efectivo</label>
+              <input type="radio" id="tarjeta" name="fav_language" value="Tarjeta">
+              <label for="tarjeta">MercadoPago</label>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <h4> Resumen del pedido</h4>
+                    <div class="spanSub">
+                      <span>Total Pedido :</span>
+                      <span id="sub"></span>
+                    </div>
+                    <div>
+                      <span>Envío :</span>
+                      <span><em class="far fa-paper-plane"> </em>$<span>0.00</span></span>
+                    </div>
+                    <div class="totalSub">
+                      <strong>Total a pagar : </strong>
+                      <span class="product-total-price"> $<strong id="totSub">1005.10</strong></span>
+                    </div>
+                  </div>
+                  <button class="btn-envio" id="envioWhatsapp">Enviar por Whatsapp <i class="fab fa-whatsapp"></i></button>
+            </div>
+          </div>
+        <div class="modal-carrito hidden" id="lista-carrito">
+            <div class="modal-content">
+              <div class="modal-header">
+                <i class="fas fa-trash-alt" id="vaciar-carrito"></i>
+                <i class="fas fa-times" id="closeModal"></i>
+              </div>
+              <div class="modal-general">
+                <div class="info-total">
+                  <span>Mi pedido</span>
+                  <h4>Total</h4>
+                </div>
+                <span id="totalCarrito">$0</span>
+              </div>
+              <div class="item-container" id="itemContenedor">
+                <!-- 
+                    <div class="carrito-vacio" id="msjVacio">
+                    <i class="fas fa-shopping-basket"></i>
+                  <strong>Tu pedido esta vacio</strong>
+                  <p>Pódes agregar productos desde el catalogo!</p>
+                  </div>
+                  -->
+              </div>
+              <button id="confirmar-pedido">Confirmar pedido <i class="far fa-check-circle"></i></button>
+            </div>
+          </div>
         <div class="wsp">
             <a href="https://api.whatsapp.com/send?phone=541157002255" class="btn-wsp" target="_blank"><i
                     class="fab fa-whatsapp"></i></a>
@@ -654,7 +680,9 @@
     <!-- WOW script -->
     <script src="js/wow.min.js"></script>
     <!-- theme custom scripts -->
-    <script src="js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/carrito.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
