@@ -8,7 +8,7 @@ import {
 } from "./firebase.js";
 
 const taskForm = document.getElementById("task-form");
-const tasksContainer = document.getElementById("tasks-container");
+const tbody = document.getElementById('tbody');
 
 let editStatus = false;
 let id = "";
@@ -19,25 +19,19 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   // });
 
   onGetTasks((querySnapshot) => {
-    tasksContainer.innerHTML = "";
 
     querySnapshot.forEach((doc) => {
       const task = doc.data();
-      tasksContainer.innerHTML += `
-      <div class="card card-body mt-2 border-primary">
-    <h3 class="h5">${task.title}</h3>
-    <p>${task.precio}</p>
-    <div>
-      <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-        🗑 Delete
-      </button>
-      <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-        🖉 Edit
-      </button>
-    </div>
-  </div>`;
+      tbody.innerHTML+=`
+      <tr>
+      <td>${task.title}</td>
+      <td>${task.precio}</td>
+      <td><button class="btn btn-secondary btn-edit" data-id="${doc.id}">🖉</button></td>
+      <td><button class="btn btn-primary btn-delete" data-id="${doc.id}">🗑</button></td>
+     </tr>
+      `;
     });
-    const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+    const btnsDelete = tbody.querySelectorAll(".btn-delete");
     btnsDelete.forEach((btn) =>
       btn.addEventListener("click", async ({ target: { dataset } }) => {
         try {
@@ -48,7 +42,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
       })
     );
 
-    const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
+    const btnsEdit = tbody.querySelectorAll(".btn-edit");
     btnsEdit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         try {
@@ -67,6 +61,23 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     });
   });
 });
+async function updateTbody (){
+  onGetTasks((querySnapshot) => {
+    tbody.innerHTML='';
+    querySnapshot.forEach((doc) => {
+      const task = doc.data();
+    tbody.innerHTML+=`
+    <tr>
+    <td>${task.title}</td>
+    <td>${task.precio}</td>
+    <td>${task.categoria}</td>
+    <td><button class="btn btn-secondary btn-edit" data-id="${doc.id}">🖉</button></td>
+    <td><button class="btn btn-primary btn-delete" data-id="${doc.id}">🗑</button></td>
+   </tr>
+    `;
+});
+  });
+}
 
 taskForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -85,7 +96,7 @@ taskForm.addEventListener("submit", async (e) => {
         precio: precio.value,
         imagen: imagen.value
       });
-
+      await updateTbody();
       editStatus = false;
       id = "";
       taskForm["btn-task-form"].innerText = "Save";
