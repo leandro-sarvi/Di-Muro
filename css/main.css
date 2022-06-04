@@ -33,6 +33,7 @@ ol, ul {
 }
 figure, p {
     margin: 3rem 0;
+    
 }
 
 a {
@@ -510,6 +511,9 @@ width: 11px;
   gap: 5rem;
   padding: 0 1rem;
 }
+#trabajos .section-title p{
+  color: #000;
+}
 .project-filter {
   margin-bottom: 40px;
 }
@@ -612,7 +616,9 @@ figcaption.mask span {
 .about-us img {
   margin: 0 auto;
 }
-
+#about .section-title  p{
+  color: black;
+}
 /* Counter section */
 
 #count {
@@ -801,6 +807,9 @@ section #count{
   grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
   gap: 2rem;
   padding: 0 4rem;
+}
+#productos .section-title p{
+  color:#000;
 }
 .productos .card{
   display: flex;
