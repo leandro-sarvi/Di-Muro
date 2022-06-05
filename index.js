@@ -59,7 +59,6 @@ async function editar(e){
   taskForm["task-title"].value = '';
   taskForm["task-precio"].value = '';
   taskForm["task-image"].value = '';
-modalEditar.classList.toggle('hidden');
 try {
   const doc = await getTask(e.target.dataset.id);
   const task = doc.data();
@@ -68,6 +67,7 @@ try {
   taskForm["task-image"].value = task.imagen;
   editStatus = true;
   id = doc.id;
+  modalEditar.classList.toggle('hidden');
 } catch (error) {
   console.log(error);
 }
