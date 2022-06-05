@@ -9,9 +9,19 @@ import {
 
 const taskForm = document.getElementById("task-form");
 const tbody = document.getElementById('tbody');
-
+const modalEditar = document.getElementById('modal-editar');
+const btnCancelar = document.getElementById('btnCancelar');
 let editStatus = false;
 let id = "";
+btnCancelar.addEventListener('click',(e)=>{
+  e.preventDefault();
+    modalEditar.classList.toggle('hidden');
+  });
+  tbody.addEventListener("click",(e) => {
+    if(e.target.classList.contains('btn-edit')){
+      editar(e);
+    }
+  });
 window.addEventListener("DOMContentLoaded", async (e) => {
   // const querySnapshot = await getTasks();
   // querySnapshot.forEach((doc) => {
@@ -26,8 +36,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
       <tr>
       <td>${task.title}</td>
       <td>${task.precio}</td>
-      <td><button class="btn btn-secondary btn-edit" data-id="${doc.id}">🖉</button></td>
-      <td><button class="btn btn-primary btn-delete" data-id="${doc.id}">🗑</button></td>
+      <td><button class="btn btn-primary btn-edit" data-id="${doc.id}">🖉</button></td>
+      <td><button class="btn btn-danger btn-delete" data-id="${doc.id}" disabled>🗑</button></td>
      </tr>
       `;
     });
@@ -42,64 +52,62 @@ window.addEventListener("DOMContentLoaded", async (e) => {
       })
     );
 
-    const btnsEdit = tbody.querySelectorAll(".btn-edit");
-    btnsEdit.forEach((btn) => {
-      btn.addEventListener("click", async (e) => {
-        try {
-          const doc = await getTask(e.target.dataset.id);
-          const task = doc.data();
-          taskForm["task-title"].value = task.title;
-          taskForm["task-precio"].value = task.precio;
-          taskForm["task-image"].value = task.imagen;
-          editStatus = true;
-          id = doc.id;
-          taskForm["btn-task-form"].innerText = "Update";
-        } catch (error) {
-          console.log(error);
-        }
-      });
-    });
   });
 });
+
+async function editar(e){
+  taskForm["task-title"].value = '';
+  taskForm["task-precio"].value = '';
+  taskForm["task-image"].value = '';
+modalEditar.classList.toggle('hidden');
+try {
+  const doc = await getTask(e.target.dataset.id);
+  const task = doc.data();
+  taskForm["task-title"].value = task.title;
+  taskForm["task-precio"].value = task.precio;
+  taskForm["task-image"].value = task.imagen;
+  editStatus = true;
+  id = doc.id;
+} catch (error) {
+  console.log(error);
+}
+}
+
+
+
 async function updateTbody (){
   onGetTasks((querySnapshot) => {
     tbody.innerHTML='';
     querySnapshot.forEach((doc) => {
       const task = doc.data();
-    tbody.innerHTML+=`
-    <tr>
-    <td>${task.title}</td>
-    <td>${task.precio}</td>
-    <td>${task.categoria}</td>
-    <td><button class="btn btn-secondary btn-edit" data-id="${doc.id}">🖉</button></td>
-    <td><button class="btn btn-primary btn-delete" data-id="${doc.id}">🗑</button></td>
-   </tr>
-    `;
+      tbody.innerHTML+=`
+      <tr>
+      <td>${task.title}</td>
+      <td>${task.precio}</td>
+      <td><button class="btn btn-primary btn-edit" data-id="${doc.id}">🖉</button></td>
+      <td><button class="btn btn-danger btn-delete" data-id="${doc.id}" disabled>🗑</button></td>
+     </tr>
+      `;
 });
   });
 }
 
 taskForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const title = taskForm["task-title"];
   const precio = taskForm["task-precio"];
-  const imagen = taskForm["task-image"];
-
-
   try {
     if (!editStatus) {
-      await saveTask(title.value, precio.value, imagen.value);
+      await saveTask(title.value, precio.value);
     } else {
       await updateTask(id, {
         title: title.value,
         precio: precio.value,
-        imagen: imagen.value
       });
       await updateTbody();
       editStatus = false;
       id = "";
-      taskForm["btn-task-form"].innerText = "Save";
+      modalEditar.classList.toggle('hidden');
     }
 
     taskForm.reset();
